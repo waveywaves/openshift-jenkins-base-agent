@@ -2,7 +2,7 @@ Maven Slave Image
 ====================
 
 This repository contains Dockerfiles for a Jenkins Agent Docker image intended for 
-use with [OpenShift v3](https://github.com/openshift/origin)
+use with [OpenShift](https://github.com/openshift/origin)
 
 Maven Repository Support
 ---------------------------------
