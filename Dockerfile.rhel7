@@ -1,4 +1,4 @@
-FROM registry.redhat.io/rhel8/go-toolset 
+FROM openshift/origin-release:golang-1.12
 
 RUN go get -v github.com/waveywaves/go-init && go install github.com/waveywaves/go-init
 
@@ -6,7 +6,7 @@ FROM quay.io/openshift/origin-cli
 
 MAINTAINER Akram Ben Aissi <abenaiss@redhat.com>
 
-COPY --from=0 /opt/app-root/src/go/bin/go-init /usr/bin/go-init
+COPY --from=0 /go/bin/go-init /usr/bin/go-init
 
 # Labels consumed by Red Hat build service
 LABEL com.redhat.component="jenkins-slave-base-rhel7-container" \

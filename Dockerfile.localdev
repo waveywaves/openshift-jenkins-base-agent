@@ -1,5 +1,4 @@
-
-FROM registry.redhat.io/rhel8/go-toolset
+FROM openshift/origin-release:golang-1.12
 
 RUN go get -v github.com/waveywaves/go-init && go install github.com/waveywaves/go-init
 
@@ -7,7 +6,7 @@ FROM quay.io/openshift/origin-cli
 
 MAINTAINER Akram Ben Aissi <abenaiss@redhat.com>
 
-COPY --from=0 /opt/app-root/src/go/bin/go-init /usr/bin/go-init
+COPY --from=0 /go/bin/go-init /usr/bin/go-init
 
 ENV HOME=/home/jenkins
 
@@ -53,4 +52,4 @@ RUN curl https://copr.fedorainfracloud.org/coprs/alsadi/dumb-init/repo/epel-7/al
 ADD contrib/bin/* /usr/local/bin/
 
 # Run the Jenkins JNLP client
-ENTRYPOINT ["/usr/bin/dumb-init", "--", "/usr/local/bin/run-jnlp-client"]
+ENTRYPOINT ["/usr/bin/go-init", "-main", "/usr/local/bin/run-jnlp-client"]
