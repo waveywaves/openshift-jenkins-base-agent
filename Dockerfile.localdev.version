@@ -64,3 +64,4 @@ ENTRYPOINT ["/usr/bin/go-init", "-main", "/usr/local/bin/run-jnlp-client"]
 ##############################################
 # End
 ##############################################
+LABEL io.openshift.builder-version="a174595"
